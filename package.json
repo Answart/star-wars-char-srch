@@ -1,10 +1,10 @@
 {
   "name": "starwarsapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple React app that works with the Star Wars API (swapi.co) to show info on a character selected from a list.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "webpack-dev-server --hot --inline --content-base ./src --open"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +22,8 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "file-loader": "^1.1.6",
-    "react-hot-loader": "^3.0.0-beta.6",
-    "webpack": "^2.1.0-beta.27",
-    "webpack-dev-server": "^2.1.0-beta.11"
+    "react-hot-loader": "^3.1.3",
+    "webpack": "^2.7.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }
