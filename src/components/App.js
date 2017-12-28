@@ -1,6 +1,7 @@
 import React from 'react';
 import CharacterList from './CharacterList';
 import CharacterProfile from './CharacterProfile';
+import CharacterHomeworld from './CharacterHomeworld';
 
 
 
@@ -9,6 +10,9 @@ const App = () =>
     <div className='row'>
       <CharacterList />
       <CharacterProfile />
+    </div>
+    <div className="row">
+      <CharacterHomeworld />
     </div>
   </div>;
 
