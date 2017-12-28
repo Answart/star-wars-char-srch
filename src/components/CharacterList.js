@@ -29,6 +29,7 @@ const mapDispatchToProps = dispatch => ({
   setCharacter(id) {
     return () => {
       dispatch(setCurrentCharacter(id));
+      dispatch(getCharacterProfile(id));
     }
   }
 });
