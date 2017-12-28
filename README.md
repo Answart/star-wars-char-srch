@@ -1,5 +1,11 @@
-# Star Wars Character List
+# Star Wars Character Search
 
-A fun little react app that works with the star wars api to show a character's basic info, the info of their homeworld, and what movies they have been in.
+A react app that works with the [star wars api](https://swapi.co/) to show a character's basic info, the info of their homeworld, and what movies they have been in.
 
-Star Wars [API](https://swapi.co/)
+## Installation and Running
+
+```
+cd star-wars-chars
+npm install
+npm run serve
+```
