@@ -5,8 +5,8 @@ import { API_URL } from '../../constants';
 export const SET_CURRENT_CHARACTER = 'SET_CURRENT_CHARACTER';
 export const SET_CURRENT_PROFILE = 'SET_CURRENT_PROFILE';
 export const SET_CHARACTER_HOMEWORLD = 'SET_CHARACTER_HOMEWORLD';
+export const SET_CHARACTER_MOVIES = 'SET_CHARACTER_MOVIES';
 
-// handled by id.js reducer
 export function setCurrentCharacter(id) {
   return {
     type: SET_CURRENT_CHARACTER,
@@ -29,10 +29,10 @@ export function getCharacterProfile(id) {
         .then(profile => {
           dispatch(setCharacterProfile(profile));
           dispatch(getCharacterHomeworld(profile.homeworld));
+          dispatch(getCharacterMovies(profile.films));
         });
 }
 
-// handled by profile.js reducer
 export function setCharacterProfile(profile) {
   return {
     type: SET_CURRENT_PROFILE,
@@ -55,11 +55,33 @@ export function getCharacterHomeworld(url) {
         .then(homeworld => dispatch(setCharacterHomeworld(homeworld)));
 }
 
-//returns action object after dispatch info received
 export function setCharacterHomeworld(homeworld) {
-  console.log('setCharacterHomeworld homeworld', homeworld);
   return {
     type: SET_CHARACTER_HOMEWORLD,
     homeworld
+  };
+}
+
+// MOVIES DATA
+export function getCharacterMovies(movieUrls) {
+  return dispatch =>
+    Promise.all(movieUrls.map(url =>
+      fetch(url)
+        .catch(function (error) {
+          if (error.response) {
+            console.log('error data: ', error.response.data);
+            console.log('error status: ', error.response.status);
+            console.log('error headers: ', error.response.headers);
+          };
+        })
+        .then(res => res.json())
+    ))
+    .then(movies => dispatch(setCharacterMovies(movies)));
+}
+
+export function setCharacterMovies(movies) {
+  return {
+    type: SET_CHARACTER_MOVIES,
+    movies
   };
 }

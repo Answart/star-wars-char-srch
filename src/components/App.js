@@ -2,6 +2,7 @@ import React from 'react';
 import CharacterList from './CharacterList';
 import CharacterProfile from './CharacterProfile';
 import CharacterHomeworld from './CharacterHomeworld';
+import CharacterMovies from './CharacterMovies';
 
 
 
@@ -13,6 +14,7 @@ const App = () =>
     </div>
     <div className="row">
       <CharacterHomeworld />
+      <CharacterMovies />
     </div>
   </div>;
 

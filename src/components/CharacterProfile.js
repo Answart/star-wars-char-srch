@@ -13,9 +13,10 @@ const CharacterProfile = ({ profile, homeworld }) =>
     {profile.gender && <p>Gender: {profile.gender}</p>}
   </div>;
 
-const mapStateToProps = ({ character: { profile, homeworld } }) => ({
+const mapStateToProps = ({ character: { profile, homeworld, movies } }) => ({
   profile,
-  homeworld
+  homeworld,
+  movies
 });
 
 
