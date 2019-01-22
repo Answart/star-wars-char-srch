@@ -1,53 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-// hot module reloading
-import { AppContainer } from 'react-hot-loader';
-// 'createStore' helps create store, 'compose' helps compose middleware into a single middleware function
-import { createStore, applyMiddleware, compose } from 'redux';
-// 'Provider' brings redux store to app
-import { Provider } from 'react-redux';
-// 'thunk' is middleware used to delay dispatch of an action, or dispatch only if condition is met
-import thunk from 'redux-thunk';
-// 'reducer' is the top level reducer
-import reducer from './reducer';
-import { getCharacters } from './reducer/characters/actions';
+import CharacterList from './components/CharacterList';
+import CharacterProfile from './components/CharacterProfile';
+import CharacterHomeworld from './components/CharacterHomeworld';
+import CharacterMovies from './components/CharacterMovies';
 
 
+const App = () => (
+  <div className='container'>
+    <CharacterList />
 
-//devToolsExtension will be called if in window
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(
-  applyMiddleware(thunk),
-));
+    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <CharacterProfile />
 
-// Creates an action (starts AJAX request) to fetch the characters from the API (reducer/characters/actions.js). Once received, characters will be sent to an action in the store where the reducer will return the characters (reducer/characters/index.js).
-store.dispatch(getCharacters());
+      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <CharacterHomeworld />
 
-
-require('./index.html');
-
-const container = document.querySelector('#app-container');
-
-ReactDOM.render(
-  <AppContainer>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </AppContainer>,
-  container
+        <CharacterMovies />
+      </div>
+    </div>
+  </div>
 );
 
-// Hot module reloading
-if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    ReactDOM.render(
-      <AppContainer>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </AppContainer>
-      , container
-    );
-  });
-}
+export default App;
