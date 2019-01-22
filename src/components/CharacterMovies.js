@@ -2,18 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-
-const CharacterMovies = ({ movies }) =>
-  <div id="character-movies" className="col-md-6">
+const CharacterMovies = ({ movies }) => (
+  <div id="character-movies" className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <h1>Movies</h1>
-    <ul>
-      {movies.map(movie => {
-        const dateArray = movie.release_date.split('-');
 
-        return <li key={movie.title}>{movie.title} ({dateArray[0]})</li>;
+    <ul>
+      {movies.map(({ title, release_date }) => {
+        const date = release_date.split('-')[0];
+
+        return (
+          <li key={title}>
+            {title} ({date})
+          </li>
+        );
       })}
     </ul>
-  </div>;
+  </div>
+);
 
 const mapStateToProps = ({ character: { movies } }) => ({
   movies
